@@ -3,8 +3,14 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+
 
 def train_model():
+    logging.info("Starting model training...")	
     # Loading the dataset
     data = load_iris()
     X_train, X_test, y_train, y_test = train_test_split(
@@ -19,7 +25,9 @@ def train_model():
     predictions = model.predict(X_test)
     acc = accuracy_score(y_test, predictions)
     print(f"Accuracy: {acc}")
-
+    
+    logging.info("Model training completed.")
+    
     return model, acc
 
 
